@@ -1,0 +1,84 @@
+# Default compose file for development and production.
+# Should be used directly in development.
+# Automatically loads `docker-compose.override.yml` if it exists.
+# No extra steps required.
+# Should be used together with `docker/docker-compose.prod.yml`
+# in production.
+
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      args:
+        DJANGO_ENV: development
+    depends_on:
+      db:
+        condition: service_started
+      migrate:
+        condition: service_completed_successfully
+    ports:
+      - "8001:8000"
+    networks:
+      - webnet
+      - postgresnet
+    volumes:
+      - django-static:/var/www/django/static
+      - .:/code
+    env_file: ./config/.env
+    environment:
+      DJANGO_DATABASE_HOST: db
+    command: python -Wd manage.py runserver 0.0.0.0:8000
+#    healthcheck:
+#      # We use `$$` here because:
+#      # one `$` goes to shell,
+#      # one `$` goes to `docker-compose.yml` escaping
+#      #test: |
+#      #  /usr/bin/test $$(
+#      #    /usr/bin/curl --fail http://localhost:8000/health/?format=json
+#      #    --write-out "%{http_code}" --silent --output /dev/null
+#      #  ) -eq 200
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#      start_period: 30s
+
+
+  migrate:
+    build:
+      context: .
+      args:
+        DJANGO_ENV: development
+    depends_on:
+      db:
+        condition: service_started
+    networks:
+      - webnet
+      - postgresnet
+    volumes:
+      - django-static:/var/www/django/static
+      - .:/code
+    env_file: ./config/.env
+    environment:
+      DJANGO_DATABASE_HOST: db
+    command: python manage.py migrate
+
+
+  db:
+    image: postgres:15.3-alpine3.18
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - postgresnet
+    env_file: ./config/.env
+
+
+networks:
+  # Network for postgres, use it for services that need access to the db:
+  postgresnet:
+  # Network for your internals, use it by default:
+  webnet:
+
+volumes:
+  pgdata:
+  django-static:

@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "django-rest-framework-template"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Korchagin <xoste49@gmail.com>"]
+readme = "README.md"
+
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.2"
+
+djangorestframework = "^3.14.0"  # DRF
+django-split-settings = "^1.2.0"  # https://github.com/wemake-services/django-split-settings
+python-decouple = "^3.8"
+psycopg = {extras = ["binary"], version = "^3.1.9"}
+
+[tool.poetry.group.dev.dependencies]
+django-stubs = {extras = ["compatible-mypy"], version = "^4.2.1"}  # https://github.com/typeddjango/django-stubs
+ipython = "^8.14.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
