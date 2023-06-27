@@ -115,7 +115,6 @@ MEDIA_ROOT = BASE_DIR.joinpath('media')
 # https://docs.djangoproject.com/en/4.2/topics/auth/
 
 AUTHENTICATION_BACKENDS = (
-    #'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -137,18 +136,11 @@ SECURE_BROWSER_XSS_FILTER = True
 
 X_FRAME_OPTIONS = 'DENY'
 
-# https://github.com/DmytroLitvinov/django-http-referrer-policy
-# https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-#REFERRER_POLICY = 'same-origin'
-
-# https://github.com/adamchainz/django-permissions-policy#setting
-#PERMISSIONS_POLICY: Dict[str, Union[str, List[str]]] = {}  # noqa: WPS234
-
 
 # Timeouts
 # https://docs.djangoproject.com/en/4.2/ref/settings/#std:setting-EMAIL_TIMEOUT
 
-#EMAIL_TIMEOUT = 5
+EMAIL_TIMEOUT = 5
 
 
 # Default primary key field type

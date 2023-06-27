@@ -18,8 +18,6 @@ ENV = environ.get('DJANGO_ENV') or 'development'
 base_settings = [
     'components/common.py',  # standard django settings
     'components/database.py',  # postgres
-    #'components/rq.py',  # redis and redis-queue
-    #'components/emails.py',  # smtp
 
     # You can even use glob:
     # 'components/*.py'

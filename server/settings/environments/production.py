@@ -8,21 +8,18 @@ values are overridden.
 from server.settings.components import config
 
 # Production flags:
-# https://docs.djangoproject.com/en/3.2/howto/deployment/
+# https://docs.djangoproject.com/en/4.2/howto/deployment/
 
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    # TODO: check production hosts
-    config('DOMAIN_NAME'),
-
     # We need this value for `healthcheck` to work:
     'localhost',
 ]
 
 
 # Staticfiles
-# https://docs.djangoproject.com/en/3.2/ref/contrib/staticfiles/
+# https://docs.djangoproject.com/en/4.2/ref/contrib/staticfiles/
 
 # This is a hack to allow a special flag to be used with `--dry-run`
 # to test things locally.
@@ -40,13 +37,13 @@ STATICFILES_STORAGE = (
 
 
 # Media files
-# https://docs.djangoproject.com/en/3.2/topics/files/
+# https://docs.djangoproject.com/en/4.2/topics/files/
 
 MEDIA_ROOT = '/var/www/django/media'
 
 
 # Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 _PASS = 'django.contrib.auth.password_validation'  # noqa: S105
 AUTH_PASSWORD_VALIDATORS = [
@@ -58,7 +55,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Security
-# https://docs.djangoproject.com/en/3.2/topics/security/
+# https://docs.djangoproject.com/en/4.2/topics/security/
 
 SECURE_HSTS_SECONDS = 31536000  # the same as Caddy has
 SECURE_HSTS_INCLUDE_SUBDOMAINS = True
