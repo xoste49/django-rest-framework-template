@@ -14,6 +14,7 @@ djangorestframework = "^3.14.0"  # DRF
 django-split-settings = "^1.2.0"  # https://github.com/wemake-services/django-split-settings
 python-decouple = "^3.8"
 psycopg = {extras = ["binary"], version = "^3.1.9"}
+django-health-check = "^3.17.0"  # https://github.com/revsys/django-health-check
 
 [tool.poetry.group.dev.dependencies]
 django-stubs = {extras = ["compatible-mypy"], version = "^4.2.1"}  # https://github.com/typeddjango/django-stubs
