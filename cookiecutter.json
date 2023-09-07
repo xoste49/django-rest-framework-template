@@ -1,0 +1,8 @@
+{
+  "full_name": "Pavel Korchagin",
+  "email": "xoste49@gmail.com",
+  "project_name": "Django REST framework template",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "time_zone": ["UTC", "Europe/Moscow"],
+  "language_code": ["en-us", "ru-ru"]
+}

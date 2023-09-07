@@ -1,0 +1,30 @@
+# Automatically loads `docker-compose.override.yml` if it exists.
+
+version: "3.8"
+services:
+  db:
+    image: "postgres:15.4-alpine"
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    env_file: ./config/.env
+
+  api:
+    image: "{{ cookiecutter.project_slug }}:dev"
+    build:
+      target: development_build
+      context: .
+      dockerfile: Dockerfile
+      args:
+        DJANGO_ENV: development
+      cache_from:
+        - "{{ cookiecutter.project_slug }}:dev"
+    depends_on:
+      - db
+    env_file: ./config/.env
+    environment:
+      DJANGO_DATABASE_HOST: db
+    command: python -Wd manage.py runserver 0.0.0.0:8000
+
+volumes:
+  pgdata:

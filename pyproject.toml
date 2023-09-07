@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "django-rest-framework-template"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Korchagin <xoste49@gmail.com>"]
+readme = "README.md"
+packages = [{include = "django_rest_framework_template"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+cookiecutter = "^2.3.0"  # https://github.com/cookiecutter/cookiecutter
+
+
+[build-system]
+requires = ["poetry-core>=1.6.1"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "0.1.0"
+description = ""
+authors = ["{{ cookiecutter.full_name }} <{{ cookiecutter.email }}>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2.4"  # https://github.com/django/django
+djangorestframework = "^3.14.0"  # https://github.com/encode/django-rest-framework
+django-stubs-ext = "^4.2.2"  # https://github.com/typeddjango/django-stubs
+django-split-settings = "^1.2.0"  # https://github.com/wemake-services/django-split-settings
+python-decouple = "^3.8"  # https://github.com/HBNetwork/python-decouple
+psycopg = {extras = ["binary"], version = "^3.1.10"}  # https://www.psycopg.org/psycopg3/docs/index.html
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.4"
+django-stubs = {extras = ["compatible-mypy"], version = "^4.2.3"}  # https://github.com/typeddjango/django-stubs
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
